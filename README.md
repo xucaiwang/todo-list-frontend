@@ -26,8 +26,7 @@
     git clone git@github.com:xucaiwang/todo-list-frontend.git
     cd todo-list-frontend
     ```
-    
-    ```
+ 
 2. 构建Docker镜像和启动容器:
     ```bash
     docker build -t todo-list-frontend:latest .
