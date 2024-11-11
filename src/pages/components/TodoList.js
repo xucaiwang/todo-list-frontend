@@ -10,25 +10,25 @@ const TodoList = () => {
     }, []);
 
     const fetchTodos = async () => {
-        const response = await axios.get('http://local:8080/api/todos');
+        const response = await axios.get('http://localhost:8080/api/todos');
         setTodos(response.data);
     };
 
     const handleAddTodo = async () => {
-        const response = await axios.post('http://local:8080/api/todos', { title: newTodo, completed: false });
+        const response = await axios.post('http://localhost:8080/api/todos', { title: newTodo, completed: false });
         setTodos([...todos, response.data]);
         setNewTodo('');
     };
 
     const handleDeleteTodo = async (id) => {
-        await axios.delete(`http://local:8080/api/todos/${id}`);
+        await axios.delete(`http://localhost:8080/api/todos/${id}`);
         setTodos(todos.filter(todo => todo.id !== id));
     };
 
     const handleToggleTodo = async (id) => {
         const todo = todos.find(todo => todo.id === id);
         const updatedTodo = { ...todo, completed: !todo.completed };
-        await axios.put(`http://local:8080/api/todos/${id}`, updatedTodo);
+        await axios.put(`http://localhost:8080/api/todos/${id}`, updatedTodo);
         const newTodos = todos.map(todo => todo.id === id ? updatedTodo : todo);
         setTodos(newTodos);
     };
